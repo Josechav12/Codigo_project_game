@@ -112,6 +112,9 @@ def mostrar_menu(ventana: pygame.Surface) -> str:
 
         # Dibujar el menú
         ventana.fill((0, 0, 0))  # Fondo negro
+        titulo_texto = fuente_menu.render("¡Bienvenidos!", True, YELLOW)
+        titulo_rect = titulo_texto.get_rect(center=(ventana.get_width() // 2, 100))
+        ventana.blit(titulo_texto, titulo_rect)
         for i, texto in enumerate(opciones):
             color = (255, 255, 0) if i == seleccion else (100, 100, 100)
             opcion_render = fuente.render(texto, True, color)
