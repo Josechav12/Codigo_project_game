@@ -34,9 +34,8 @@ intro_text = [
 # Fondo de estrellas para la intro
 estrellas = [(pygame.Vector2(x, y), random.randint(1, 3)) for x, y in
         [(random.randint(0, ANCHO), random.randint(0, ALTO)) for _ in range(100)]]
-from typing import List, Tuple
 
-def dibujar_estrellas(ventana: pygame.Surface, estrellas: List[Tuple[pygame.Rect, int]]) -> None:
+def dibujar_estrellas(ventana, estrellas) -> None:
     """Dibuja un fondo de estrellas en movimiento."""
     for estrella, size in estrellas:
         pygame.draw.circle(ventana, YELLOW, estrella, size)
