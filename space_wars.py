@@ -6,6 +6,21 @@ from constantes import (
     RED,
     BLUE
 )
+from jugador import (
+    cargar_imagen_jugador,
+    crear_resistencia,
+    actualizar_resistencia
+)
+from enemigos import (
+    cargar_imagen_soldado,
+    crear_soldado_imperial,
+    actualizar_soldado_imperial
+)
+from intro import mostrar_intro
+from menu import (
+    mostrar_menu,
+    pedir_datos
+)
 
 # Inicializar Pygame  
 pygame.init()
@@ -133,3 +148,4 @@ while corriendo:
     pygame.display.flip()
 
 pygame.quit()
+
