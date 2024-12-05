@@ -71,34 +71,3 @@ def dibujar_stats(ventana, jugador, fuente):
     ventana.blit(vida_text, (10, 10))
     ventana.blit(puntos_text, (10, 50))
     ventana.blit(enemigos_text, (10, 90))
-
-
-def guardar_jugador(nombre: str, puntos: int, enemigos_eliminados: int) -> None:
-    """Guarda los datos del jugador en un archivo, ordenado por puntos."""
-    # Leer todos los jugadores almacenados en el archivo
-    jugadores = []
-    try:
-        with open("jugadores.txt", "r") as archivo:
-            for linea in archivo:
-                # Separar los datos y extraer los puntos de cada línea
-                partes = linea.split(",")
-                if len(partes) > 1:
-                    puntos_guardados = int(partes[1].split(":")[1].strip())
-                    nombre_guardado = partes[0].strip()
-                    enemigos_guardados = int(partes[2].split(":")[1].strip())
-                    jugadores.append((nombre_guardado, puntos_guardados, enemigos_guardados))
-    except FileNotFoundError:
-        # Si el archivo no existe, se crea uno nuevo vacío
-        pass
-    
-    # Agregar el nuevo jugador
-    jugadores.append((nombre, puntos, enemigos_eliminados))
-    
-    # Ordenar los jugadores por puntos en orden descendente
-    jugadores.sort(key=lambda x: x[1], reverse=True)
-    
-    # Reescribir todos los jugadores en el archivo, ya ordenados
-    with open("jugadores.txt", "w") as archivo:
-        for jugador in jugadores:
-            archivo.write(f"{jugador[0]}, Puntos: {jugador[1]}, Naves eliminadas: {jugador[2]}\n")
-
